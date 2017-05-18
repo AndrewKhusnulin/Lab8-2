@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 
 
-set(HEADERS ${PROJECT_SOURCE_DIR}/include/test.h)
+set(HEADERS ${PROJECT_SOURCE_DIR}/include/test.hpp)
 
 set(HEADERS ${PROJECT_SOURCE_DIR}/include/catch.hpp)
 
