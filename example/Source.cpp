@@ -1,16 +1,16 @@
 #include"testclass.hpp"
 int main()
 {
-	Complex_t<double> a{ 5.0, 7.0 };
+	Complex_t<double> a{ 7.0, 9.0 };
 	
-	Complex_t<double> b{ 5.0,7.0 };
+	Complex_t<double> b{ 7.0,9.0 };
 	
 	a == b; 
 	
 	a += a;
 	cout << "a+=a" << a << endl;
-	b -= {2, 3};
-	cout << "b-={2,3} " << b << endl;
+	b -= {3, 5};
+	cout << "b-={3,5} " << b << endl;
 	a *= b;
 	a+b;
 	a*b;
