@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project (Lab8-2_example)
+set(SOURCES Source.cpp)
+add_executable (${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} Lab8-2)
