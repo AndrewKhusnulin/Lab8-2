@@ -1,37 +1,37 @@
-#include <test.hpp>
+x#include <test.hpp>
 #include <catch.hpp>
 Complex<double> a {7.0, 9.0};
 Complex<double> b {7.0, 9.0};
 SCENARIO ("constructorTest")
 {	
- int Real = a.getReal();	
- int Imag = a.getIm();	
+ int Real = x.getReal();	
+ int Imag = y.getIm();	
  REQUIRE (Real == 5);	
  REQUIRE (Imag == 10);
 }
 
 SCENARIO ("Addition"){	
-  comp.add(a,b);	
+  comp.add(x,y);	
   int Real = comp.getReal();	
   int Imag = comp.getIm();	
   REQUIRE (Real == 12);	
   REQUIRE (Imag == 20);
 }
 SCENARIO ("Sub"){	
-  comp.sub(a,b);	
+  comp.sub(x,y);	
   int Real = comp.getReal();	
   int Imag = comp.getIm();	
   REQUIRE (Real == 8);	
   REQUIRE (Imag == 10);}
 SCENARIO ("MultiNum")
-{	comp.mult(a,2);	
+{	comp.mult(x,2);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == 10);	
  REQUIRE (Imag == 20);
 }
 SCENARIO ("DivNum")
-{	comp.div(a,5);	
+{	comp.div(x,5);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == 1);	
@@ -45,7 +45,7 @@ SCENARIO ("DivNumZero","[!mayfail]")
  REQUIRE (Imag == 0);
 }
 SCENARIO("MultiComplex")
-{	comp.multC(a,b);	
+{	comp.multC(x,y);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == -75);	
