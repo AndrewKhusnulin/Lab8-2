@@ -16,10 +16,10 @@ int main()
 	a*b;
 	a-b;
 	a/b;
-	cout << "a+b=" << a + b << endl;
+	/*cout << "a+b=" << a + b << endl;
 	cout << "a*b=" << a*b << endl;
 	cout << "a-b=" << a - b << endl;
-	cout << "a/b=" << a / b << endl;
+	cout << "a/b=" << a / b << endl;*/
 
 	system("pause");
 	return 0;
