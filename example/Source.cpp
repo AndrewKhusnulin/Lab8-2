@@ -8,9 +8,9 @@ int main()
 	a == b; 
 	
 	a += a;
-	cout << "a+=a" << a << endl;
+	//cout << "a+=a" << a << endl;
 	b -= {3, 5};
-	cout << "b-={3,5} " << b << endl;
+	//cout << "b-={3,5} " << b << endl;
 	a *= b;
 	a+b;
 	a*b;
