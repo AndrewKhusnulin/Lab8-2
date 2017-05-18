@@ -18,11 +18,11 @@ public:
 	}
 	void operator * (int a)
 	{
-		cout << real*a << ";" << imaginary*a << endl;
+		cout << "(" << real*a << ";" << imaginary*a << ")" << endl;
 	}
 	void operator / (double a)
 	{
-		cout << real/a << ";" << imaginary/a << endl;
+		cout << "(" << real/a << ";" << imaginary/a << ")" << endl;
 	}
 	Complex_t(const Complex_t &complex)
 	{
