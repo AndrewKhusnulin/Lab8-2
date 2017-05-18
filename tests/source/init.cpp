@@ -4,34 +4,34 @@ Complex<double> a {7.0, 9.0};
 Complex<double> b {7.0, 9.0};
 SCENARIO ("constructorTest")
 {	
- int Real = x.getReal();	
- int Imag = x.getIm();	
+ int Real = a.getReal();	
+ int Imag = a.getIm();	
  REQUIRE (Real == 5);	
  REQUIRE (Imag == 10);
 }
 
 SCENARIO ("Addition"){	
-  comp.add(x,y);	
+  comp.add(a,b);	
   int Real = comp.getReal();	
   int Imag = comp.getIm();	
   REQUIRE (Real == 12);	
   REQUIRE (Imag == 20);
 }
 SCENARIO ("Sub"){	
-  comp.sub(x,y);	
+  comp.sub(a,b);	
   int Real = comp.getReal();	
   int Imag = comp.getIm();	
   REQUIRE (Real == 8);	
   REQUIRE (Imag == 10);}
 SCENARIO ("MultiNum")
-{	comp.mult(x,2);	
+{	comp.mult(a,2);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == 10);	
  REQUIRE (Imag == 20);
 }
 SCENARIO ("DivNum")
-{	comp.div(x,5);	
+{	comp.div(a,5);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == 1);	
@@ -45,7 +45,7 @@ SCENARIO ("DivNumZero","[!mayfail]")
  REQUIRE (Imag == 0);
 }
 SCENARIO("MultiComplex")
-{	comp.multC(x,y);	
+{	comp.multC(a,b);	
  int Real = comp.getReal();	
  int Imag = comp.getIm();	
  REQUIRE (Real == -75);	
