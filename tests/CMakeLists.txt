@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-set(TESTS_FOR_PROJECT complexcalss-addition)
+set(TESTS_FOR_PROJECT Lab8-2)
 project(${TESTS_FOR_PROJECT}_tests)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 option(BUILD_SHARED_LIBS "Build shared instead of static library" OFF)
