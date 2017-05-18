@@ -1,4 +1,5 @@
-#include <test.hpp>#include <catch.hpp>
+#include <test.hpp>
+#include <catch.hpp>
 Complex<double> a {7.0, 9.0};
 Complex<double> b {7.0, 9.0};
 SCENARIO ("constructorTest")
