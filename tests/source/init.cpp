@@ -1,53 +1,75 @@
-x#include <test.hpp>
+#include <testclass.hpp>
 #include <catch.hpp>
-Complex<double> a {7.0, 9.0};
-Complex<double> b {7.0, 9.0};
-SCENARIO ("constructorTest")
-{	
- int Real = x.getReal();	
- int Imag = y.getIm();	
- REQUIRE (Real == 5);	
- REQUIRE (Imag == 10);
+
+SCENARIO("ConstrDefa") {
+	Complex comp;
+	REQUIRE(comp.getReal() == 0);
+	REQUIRE(comp.getIm() == 0);
 }
 
-SCENARIO ("Addition"){	
-  comp.add(x,y);	
-  int Real = comp.getReal();	
-  int Imag = comp.getIm();	
-  REQUIRE (Real == 12);	
-  REQUIRE (Imag == 20);
+SCENARIO("constructor with params") {
+	Complex comp(1, 2);
+	REQUIRE(comp.getReal() == 1);
+	REQUIRE(comp.getIm() == 2);
 }
-SCENARIO ("Sub"){	
-  comp.sub(x,y);	
-  int Real = comp.getReal();	
-  int Imag = comp.getIm();	
-  REQUIRE (Real == 8);	
-  REQUIRE (Imag == 10);}
-SCENARIO ("MultiNum")
-{	comp.mult(x,2);	
- int Real = comp.getReal();	
- int Imag = comp.getIm();	
- REQUIRE (Real == 10);	
- REQUIRE (Imag == 20);
+
+SCENARIO("copy constructor") {
+	Complex comp(1, 2);
+	Complex copy(comp);
+	REQUIRE(copy.getReal() == 1);
+	REQUIRE(copy.getIm() == 2);
 }
-SCENARIO ("DivNum")
-{	comp.div(x,5);	
- int Real = comp.getReal();	
- int Imag = comp.getIm();	
- REQUIRE (Real == 1);	
- REQUIRE (Imag == 2);
+
+SCENARIO("operator*") {
+	Complex c1(7, 6);
+	Complex c2(5, 4);
+	Complex c3(11, 58);
+	REQUIRE((c1*c2)==c3);
 }
-SCENARIO ("DivNumZero","[!mayfail]")
-{	comp.div(x,0);	
- int Real = comp.getReal();	
- int Imag = comp.getIm();	
- REQUIRE (Real == 0);	
- REQUIRE (Imag == 0);
+
+SCENARIO("operator/") {
+	Complex c1(7, 6);
+	Complex c2(7, 6);
+	Complex c3(1, 0);
+	REQUIRE((c1/c2)==c3);
 }
-SCENARIO("MultiComplex")
-{	comp.multC(x,y);	
- int Real = comp.getReal();	
- int Imag = comp.getIm();	
- REQUIRE (Real == -75);	
- REQUIRE (Imag == 100);
+
+SCENARIO("operator +=") {
+	Complex c1(13, 1); 
+	Complex c2(7, 6);
+	Complex c3(20, 7);
+	REQUIRE((c1+=c2)==c3);
+}
+
+SCENARIO("operator -=") {
+	Complex c1(13, 10); 
+	Complex c2(7, 6);
+	Complex c3(6, 4);
+	REQUIRE((c1-=c2)==c3);
+}
+
+SCENARIO("operator *=") {
+	Complex c1(7, 6); 
+	Complex c2(5, 4);
+	Complex c3(11, 58);
+	REQUIRE((c1*=c2)==c3);
+}
+
+SCENARIO("operator /=") {
+	Complex c1(7, 6); 
+	Complex c2(7, 6);
+	Complex c3(1, 0);
+	REQUIRE((c1/=c2)==c3);
+}
+
+SCENARIO("operator =") {
+	Complex c1(3, 3); 
+	Complex c2=c1;
+	REQUIRE(c2==c1);
+}
+
+SCENARIO("operator ==") {
+	Complex c1(3, 1); 
+	Complex c2(3, 1);
+	REQUIRE(c1==c2);
 }
