@@ -1,4 +1,4 @@
-#include <testclass.hpp>
+#include <test.hpp>
 #include <catch.hpp>
 
 SCENARIO("ConstrDefa") {
