@@ -1,69 +1,106 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-template <typename T>
-class Complex_t
-{
-private:
-	T real, imaginary;
+
+class Complex {
+	double Real_;
+	double Im_;
 
 public:
+	Complex() : Real_(0), Im_(0) {};
+	Complex(double Real, double Im) : Real_(Real), Im_(Im) {};
 
-	Complex_t() : real(0), imaginary(0) {};
-	Complex_t(T real, T imaginary) :real(real), imaginary(imaginary) {};
-  Complex_t operator + (const Complex_t &complex)
-  {
-	return Complex_t(real + complex.real, imaginary + complex.imaginary);
+	double getReal() { return Real_; }
+	double getIm() { return Im_; }
+	
+	Complex(const Complex &c) {
+		Real_ = c.Real_;
+		Im_ = c.Im_;
 	}
-	Complex_t operator - (const Complex_t &complex)
-	{
-		return Complex_t(real - complex.real, imaginary - complex.imaginary);
+
+	Complex operator + (const Complex& c2) {
+		Complex tmp(*this);
+		tmp += c2;
+		return tmp;
 	}
-	Complex_t operator += (const Complex_t &complex)
+	Complex operator - (const Complex& c2) {
+		Complex tmp(*this);
+		tmp -= c2;
+		return tmp;
+	}
+	Complex& operator /= (const Complex& c2){
+		try {
+			if (c2.Im_ != 0 && c2.Real_ != 0) {
+				double tmp;
+				tmp = (Real_*c2.Real_ + Im_*c2.Im_) / (c2.Real_*c2.Real_ + c2.Im_*c2.Im_);
+				Im_ = (c2.Real_*Im_ - Real_*c2.Im_) / (c2.Real_*c2.Real_ + c2.Im_*c2.Im_);
+				Real_ = tmp;
+				return *this;
+			}
+			else throw "Can't divide by zero\n";
+		}
+		catch (char *msg) {
+			cout << "Error: " << msg << endl;
+			return *this;
+		}
+	}
+	Complex& operator *= (const Complex& c2)
 	{
-		real += complex.real;
-		imaginary += complex.imaginary;
+		double tmp;
+		tmp = Real_*c2.Real_ - Im_*c2.Im_;
+		Im_ = Real_*c2.Im_ + c2.Real_*Im_;
+		Real_ = tmp;
 		return *this;
 	}
-	Complex_t operator -=(const Complex_t &complex)
-	{
-		real -= complex.real;
-		imaginary -= complex.imaginary;
-		return (*this);
+	Complex  operator* (const Complex& c2) {
+		Complex tmp(*this);
+		tmp *= c2;
+		return tmp;
 	}
-	Complex_t operator *=(const Complex_t &complex)
-	{
-		real *= complex.real;
-		imaginary *= complex.imaginary;
-		return (*this);
+	Complex  operator/ (const Complex& c2) {
+		Complex tmp(*this);
+		tmp /= c2;
+		return tmp;
 	}
-	Complex_t operator * (const Complex_t &complex)
-	{
-		return Complex_t(real * complex.real - imaginary * complex.imaginary, real * complex.imaginary + imaginary * complex.real);
+	Complex& operator+=(const Complex& c2) {
+		Real_ += c2.Real_;
+		Im_ += c2.Im_;
+		return *this;
 	}
-	Complex_t operator / (const Complex_t &complex)
-	{
-		Complex_t temp{ 0.0,0.0 };
-		double k = complex.real * complex.real + complex.imaginary * complex.imaginary;
-		if (k == 0)
-			exit(1);
-		temp.real = (real * complex.real + imaginary * complex.imaginary) / k;
-		temp.imaginary = (imaginary * complex.real - real * complex.imaginary) / k;
+	Complex& operator-=(const Complex& c2) {
+		Real_ -= c2.Real_;
+		Im_ -= c2.Im_;
+		return *this;
+	}
+	Complex& operator= (const Complex& res) {
+		if (this != &res) {
+			Real_ = res.Real_;
+			Im_ = res.Im_;
+		}
+		return *this;
+	}
+	bool operator== (const Complex& c2) {
+		if ((Real_ == c2.Real_) && (Im_ == c2.Im_)) {
+			return true;
+		}
+		else return false;
+	}
 
-		return temp;
+	void print(ostream&) {
+		cout << Real_ << " + i*(" << Im_ << ')' << endl;
 	}
-	bool operator ==(Complex_t &complex)
-	{
-		if ((real != complex.real) || (imaginary != complex.imaginary))
-		{
-			cout << "complex numbers are not equal" << endl;
-			return 0;
-		}
-		else
-		{
-			cout << "numbers are equal" << endl;
-			return 0;
-		}
-		return 1;
-	}
+	friend ostream& operator << (ostream&cout, Complex& res);
+	friend istream& operator >> (istream&cin, Complex& res);
 };
+
+ostream & operator<<(ostream & out, Complex &c)
+{
+	out << c.getReal() << " + i*(" << c.getIm() << ')' << endl;
+	return out;
+}
+istream & operator >> (istream & in, Complex &c)
+{
+	in >> c.Real_;
+	in >> c.Im_;
+	return in;
+}
